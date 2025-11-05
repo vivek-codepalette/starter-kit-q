@@ -1,36 +1,38 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
+import js from "@eslint/js";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = path.dirname(__filename);
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
+  recommendedConfig: js.configs.recommended,
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     ignores: [
-      "node_modules/**",
-      ".next/**",
-      "out/**",
-      "build/**",
+      "node_modules",
+      ".next",
+      "out",
+      "build",
+      "dist",
+      ".git",
       "next-env.d.ts",
     ],
   },
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
       "react/no-unescaped-entities": "off",
-
-      // ✅ Allow @ts-nocheck
       "@typescript-eslint/ban-ts-comment": [
         "error",
         {
           "ts-expect-error": "allow-with-description",
           "ts-ignore": false,
-          "ts-nocheck": false, // 👈 turn off ban for @ts-nocheck
+          "ts-nocheck": false,
           "ts-check": true,
         },
       ],
