@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { ThemeProvider } from "next-themes";
+import { ConvexClientProvider } from "./ConvexClientProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,13 +37,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ConvexClientProvider>
           <div className="min-h-screen flex flex-col">
             <Header />
             <main className="flex-1">
-              {children}
+            {children}
             </main>
             <Footer />
           </div>
+          </ConvexClientProvider>
         </ThemeProvider>
       </body>
     </html>
