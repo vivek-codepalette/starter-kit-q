@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { Plus, Search } from "lucide-react";
-import { TodoList } from "@/components/TodoList";
 
 export default function Home() {
   return (
@@ -18,11 +17,6 @@ export default function Home() {
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
             Your gateway to AI-Powered Enterprise Apps
           </p>
-        </div>
-
-        {/* Todo List Section - Convex Test */}
-        <div className="mb-12">
-          <TodoList />
         </div>
 
         {/* Quick Actions */}
